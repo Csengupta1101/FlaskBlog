@@ -1,0 +1,64 @@
+Hello everyone and welcome to this video. It's time for us to start working with other html files and fetch 
+the required contents from other html files as well.
+
+So without any further delay let's begin.
+
+Let's move to the index.html page. Primarily we will extend the common elements from our main page into this file.
+So let's extend the main file content into here with code as seen on the screen -
+
+{% extends 'main.html' %}
+
+Now for the unique contents , let's bring in the blocked contents and name them properly. As the index page will be 
+first landing page hence we will call it home page. the code snippet is as show on the screen -
+
+{% block title %}
+<title>Home</title>   
+{% endblock title %}
+
+{% block body %}
+<h1>Home Page</h1>    
+{% endblock body %}
+
+As you can see , we are covering both the title and the heading part of the home page. Now let's render the index.html
+in our index method inside the app route of app.py , the code snippet will be as seen on the screen -
+
+@app.route("/")
+def index():
+    return render_template('index.html')
+
+In the same manner we will render template for the other pages we have. Login and register page as well. code snippet
+are as shown on the screen -
+
+@app.route("/register")
+def register():
+    return render_template('register.html')
+
+@app.route("/login")
+def login():
+    return render_template('login.html')
+
+The html content in both login and registration page will be as shared in the screen -
+
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Login</title>   
+{% endblock title %}
+
+{% block body %}
+<h1>Login Page</h1>    
+{% endblock body %}
+
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Register</title>   
+{% endblock title %}
+
+{% block body %}
+<h1>Registration Page</h1>    
+{% endblock body %}
+
+
+So now let's move ahead. We have created routes for all required templates and we rendered them as well.
+This would be the end of this video and we will again meet on the next lesson. Till then keep learning.

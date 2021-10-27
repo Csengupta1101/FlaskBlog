@@ -1,0 +1,79 @@
+Hello everyone and welcome to this video. So far we are done with our alert message on registering with the website.
+Now after registration , the obvious next step is to login into the website. Let us go ahead and do that. As you have
+guessed correctly , we will work with the login page in this session.
+
+In the login section . we will take help of bootstrap again now. The login page deals with username and password.
+So we need to look for such a form that deals with this two elements. As you can see on the screen , I found one such form.
+Let us copy and insert the same in our login page -
+
+<form method = 'POST' , action = '/login'>
+  <div class="form-group" >  
+    <label for="exampleInputEmail1" class="form-label">Username</label>
+    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name = 'username'>    
+  </div>
+  <div class="form-group"  >
+    <label for="exampleInputPassword1" class="form-label">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" name = 'password'>
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+</form>
+
+few changes that needed to be made here. The username and password segment to be assigned with their respective names.
+This names are those through which their actions will get fetched. Also we need to make sure that the input type for 
+username remains as text. For the password element , the input type should be 'password'. This ensures that the password
+is not visible while typing.
+
+The form method needs to be set as post as we will take user input here. And the method need to be executed in the python
+file as well -
+
+@app.route("/login", methods = ['GET','POST'] )
+def login():
+    username = request.form.get('username')
+    password = request.form.get('password')
+    return render_template('login.html')
+
+Now as this particular page will deal with login information , we will be needing another module called login manager
+here. We can simply search google for the installation process and we will get the documentation on the same as well.
+Now I am again telling you to always refer to the documentation  of each module for in depth understanding.
+
+As seen on the screen we will use pip installer for this module installation -
+
+pip install flask-login
+
+As it's already installed in my system hence showing requirements already satisfied.
+
+Now , let's import the login manager module itself in our app.py python file.
+
+from flask_login import LoginManager
+
+Now let's create a login object and initialise the same as seen on the screen -
+
+login_manager = LoginManager
+login_manager.init_app(app)
+
+Let's import few more required modules as shown on the screen here -
+
+from flask_login import LoginManager ,login_user ,UserMixin
+
+Now it's absolutely crucial to set our login procedure as such so that any username that'
+not in our database , if submitted throws an warning/error. so our login method will be as shown 
+on the screen -
+
+@app.route("/login", methods = ['GET','POST'] )
+def login():
+    if request.method == 'POST':
+        username = request.form.get('username')
+        password = request.form.get('password')
+        user = User.query.filter_by(username=username).first()
+        if user and password == user.password:
+            login_user(user)
+            return redirect('/')
+        else:
+            flash('invalid credentials','warning')
+            return redirect('/login')
+
+This if else conditioning ensure the authenticity of the login. We are using flash messages as well here.
+Now let's run our app and move to login page. We will see that are able to login into our site now.
+
+This would be the end of this video and we will again meet on the next lesson. Till then keep learning.
+

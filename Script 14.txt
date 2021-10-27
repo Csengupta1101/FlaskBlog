@@ -1,0 +1,64 @@
+Hello everyone and welcome to this video. So we have succesfully created our login form and are able to login
+through that. Great work guys.
+
+So now our job is to show the right options in the login page , once a user has logged in. Once a user has logged in
+, he or she must have access to logout option. And also creating a blog option , as our website is a blogging site.
+
+So without any further delay let's begin.
+
+So we know what to be done , let's code it up. 
+
+Let's talk about home page first. We want to make sure that the home page displays the user name who has logged 
+into the site. To ensure that our index.html snippet will be as shown on the screen -
+
+{% block body %}
+<h1>Home Page</h1>
+{{current_user.username}}    
+{% endblock body %}
+
+Now let's work on the main.html page as all the other pages are rendered from there. Let us create function that will
+display the logout and making a blog post option towards the user. And these options will be shown in the navbar.
+
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="#">My Blogs</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        {% if current_user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link" href="">{{current_user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blogpost">Post Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        {% endif %}
+      </ul>
+
+</nav>
+
+Now if we run our app and log into the website with any of the user data that we have submitted , we will have the 
+blog post and log out options in the navbar section.
+
+Now we have succefully created the navbar options to be shown after a user login. But we are yet to create a landing 
+page for these options. The log out and blog post options doesn't have any landing pages as of now.
+
+On our next lesson we will focus on creating them.
+
+So this would be the end of this video and we will again meet on the next lesson.
+

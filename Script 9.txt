@@ -1,0 +1,41 @@
+Hello everyone and welcome to this video. So we have created our database model already with required fields in place.
+It's time to add data into the model. Today we will just be doing that only.
+
+So without any further delay let's begin.
+
+In today's session we will be adding up datapoints from our python terminal itself. So let's open the terminal
+and code it up with data.
+
+The data model is created is under the method name User. So let's import the model first.
+from app import User
+
+Then of course to add data in database we need to import db 
+from app import db
+
+Now let's add data points. As you know the id is primary key and is auto incremental so we will be adding the rest datapoints.
+We have username , first and last name , email id , password and city as required fields. so we will add all of them
+altogether -
+
+user = User(username = "csengupta"' , fname = "chandan" , lname = "sengupta" , email = "csengupta1101@outlook.com" 
+, password = "abcd1234" , city = "kolk4" , city = "kolkata")
+
+we are assigning the datapoints to user class here.
+
+Now let's add the data to session and commit.
+>>> db.session.add(user)
+>>> db.session.commit()
+
+now we can query on all the data points with SQL like commands -
+
+>>> data = User.query.all()
+>>> data
+
+this will fetch us the user details as result.we can even fetch this data by index.
+to access the first indexed item , here it's username we can simply pass on data[0].
+
+We can also visit the sqlite viewer to see the data updated as we gave the input -
+https://inloop.github.io/sqlite-viewer/
+
+In this lesson we have learned how to add on the details in our data from python terminal itself.
+In our next lessons we will look into how to add data through the form that we added on the registration page
+

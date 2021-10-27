@@ -1,0 +1,49 @@
+Hello everyone and welcome to this video. In today's lesson we will how to create a database model.This database model
+will accept user inputs in the page and will store the data in the database server.
+
+So without any further delay , let's begin.
+
+Like before we will again resort to the sqlalchemy documentation. As you can see on the screen , there is pre defined 
+User method stated in there. We will simply copy the code and paste it in our app.py , the code snippet will be as shown
+on the screen -
+
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+In here as you can see , by default 3 input parameter is given. id is the primary key. It also is a default parameter 
+for our data base. So we will leave it as it is. We'll create rest parameters as per our requirments. As seen in the screen -
+class User(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    fname = db.Column(db.String(120),  nullable=False)
+    lname = db.Column(db.String(120),  nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+    password = db.Column(db.String(120),  nullable=False)
+    city = db.Column(db.String(120),  nullable=False)
+
+As all the inputs will be strings , hence same is mentioned. first name , last name , password and city name can be same for multiple
+user. Hence unique arguments are not assigned to them. 80,120 etc are length limit for each strings.
+We have nullable as false , as we won't let any null value stay in our data.
+
+ as the model is created , lets set the model in our database. Open up the python terminal.
+ Type the code as shown on the screen and your database will be created in the folder.
+
+>>> from app import db
+>>> db.create_all()
+>>> 
+
+now let's check what data our database holds. As our data model is under User method , we'll fetch it -
+>>> from app import User
+>>> user=User.query.all()
+>>> user
+[]
+
+As you can see our data model is returning a blank list , as we didn't give any input as of now. But our 
+Data Model is created and is functional.
+
+This would be the end of this video and we will again meet on the next lesson.

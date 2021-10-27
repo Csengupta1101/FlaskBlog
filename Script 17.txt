@@ -1,0 +1,82 @@
+Hello everyone and welcome to this video. So by now our blogs are able to take user input. The blogs are being displayed
+in the home page as well. Perfect. Now once this is done , let us talk about one more very crucial element. We need 
+to provide functionality on the "continue reading" button.
+
+So without any further delay let's begin.
+
+Let's talk about assigning a unique id to each blog first. Ths unique id will help us identify each blogs separately
+and then will get connected with the continue reading section. And once the id is set , we will be able to set up the href
+landing. It's named blog detail here. We will create a blog_detail landing page as well for the users to redirect
+into. We simply put the snippet as on the screen -
+
+<a href="/blog_detail/{{blog.blog_id}}"  class = 'btn btn-primary'>Continue reading</a>
+
+Once this is done , we as well need to set up our python file. The app.py file will have a function that's going to 
+execute this functionality. The code snippet will be as shown on the screen -
+
+@app.route("/blog_detail/<int:id>" , methods = ['GET','POST'])
+def blogdetail(id):
+    blog = Blog.query.get(id)
+    return render_template('blog_detail.html',blog=blog)
+
+This is the new landing url for "blog_detail" element. The id we have generated with blog_id is of int category . hence
+the id dtype is set as "int" here. the template we are rendering here , will need be created as well. And that template
+will have the blog query details. This details will be assigned to the particular blog_id.
+
+the new blog_detail html page snippet will be as seen on the screen -
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogDetail</title>
+</head>
+<body>
+    {{blog.title}}<br>
+    {{blog.author}}<br>
+    {{blog.content}}<br>
+    {{blog.pub_date}}<br>
+</body>
+</html>
+
+Now let's save and run the python file. And now visit the homepage. Let us go ahead and click on any of the blog's 
+"continue reading" section. We will see the blogs are open on our recently created template.
+
+Now let's design the blog post design in the new template. We need to use the same blog card that we used prior. 
+Let us just copy and paste the card code inside the "blog_detail" html body section. 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogDetail</title>
+</head>
+<body>
+    <div class="col-md-6">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <h3 class="mb-0">{{blog.title}}</h3>
+              <div class="mb-1 text-muted">{{blog.pub_date}}</div>
+              <div class="mb-1 text-muted"><h5>{{blog.author}}</h4></div>
+              <p class="card-text mb-auto">{{blog.content}}</p>
+            </div>
+        </div>  
+    </div>
+</body>
+</html>
+
+This goes without saying , this continued section will not have the "Continue reading" section in it. But this time we will
+not extend the main.html file inside the blog_detail.html file. Simply because , once we are inside of it , we should
+be able to modify/delete the contents of our blogs. And these navbar options will only be shared once we are inside of the
+blog_details.html segment.
+
+On our next lesson we will discuss about the customised bootstraping and navbar selection for the blog_detail page.
+
+This would be the end of this video. We will again meet on the next session. Till then keep learning.
+
+
+

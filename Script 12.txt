@@ -1,0 +1,49 @@
+Hello everyone and welcome to this video. Today's session will be a small yet extremely crucial one. 
+So I would request all of you to be extremely attentive here.
+
+I hope most of you are in social media sites like , facebook , instagram etc. Now what exactly happens when you
+first create a profile in these sites? you get a welcome message right ??
+
+Today we will be in-corporating the same into our site using flask frame work. We will be taking help of both flask 
+documentation and bootstrap files.
+
+From the flask framework we will be importing flash module. The documentation of flashing will help us to access 
+the coding part of the same. Inside of the flash codes we will code up the bootstrap segment which will display
+the desired alert message.
+
+We will be redirecting our users to the login page of the site. After the registration is done , we would require people to log in.
+Hence the redirection will be pointed toward the login page.
+
+The code snippet on the login page is as shown in the screen -
+
+{% block body %}
+<h1>Login Page</h1>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <ul class=flashes>
+    {% for category, message in messages %}
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Well done!</h4>
+        <p>you've succefully registered.</p>
+      </div>
+    {% endfor %}
+    </ul>
+  {% endif %}
+{% endwith %}    
+{% endblock body %}
+
+The messages shown "you've succefully registered." is what will reflect in the system once the registration is processed.
+The app.py file needs a secret key set up as well. The code snippet is as shown on the screen -
+
+app = Flask(__name__)
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///mydb.db'
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'thisissecret'
+db = SQLAlchemy(app)
+
+Now once you run the file and fill up the registration form , the alerts message will reflect and login page will be
+redirected to.
+
+This would be the end of this video. We will again meet on the next lesson. Till then keep learning.
+

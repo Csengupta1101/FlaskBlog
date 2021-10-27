@@ -1,0 +1,41 @@
+{% extends 'main.html' %}
+
+{% block title %}
+<title>Register</title>   
+{% endblock title %}
+
+{% block body %}
+<h1 class='text-center'>Registration Page</h1>
+<div class="container">
+<form class="row g-3 needs-validation" method ='POST' action ='/register' novalidate>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="first name"  name ="fname"  required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" placeholder="last name" name ="lname"  required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+      <input type="text" class="form-control" placeholder="username" id="validationCustomUsername" aria-describedby="inputGroupPrepend" name ="username"  required>
+  </div>
+      <div class="col-md-4">
+      <label for="pwd" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="password" name ="password"  required>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom03" class="form-label">City</label>
+      <input type="text" class="form-control" placeholder="city" id="validationCustom03" name ="city"  required>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom05" class="form-label">Email I'd</label>
+      <input type="email" class="form-control" placeholder="email" id="validationCustom05" name ="email"  required>
+    </div>
+    
+    <div  class = "my-3">
+      <button class="btn btn-primary"  type="submit">Submit form</button>
+    </div>
+  </form> 
+</div>   
+{% endblock body %}

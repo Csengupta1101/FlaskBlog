@@ -1,0 +1,93 @@
+Hello everyone and welcome to this video. Today we will be continuing the creation of landing pages for log out
+and blog post options. We need to make sure that these options are functioning smoothly and each redirection is
+properly channelled. 
+
+So without further delays let's begin.
+
+Let us first create our logout page. Once a user has logged in , this option will be shown in the navbar. How to implement
+this option in the navbar , we already discussed briefly in our last lesson. So for the logout option to work ,
+we need to import the logout user module -
+
+from flask_login import LoginManager ,login_user ,UserMixin ,logout_user
+
+Then we will creating an url route for this landing page.
+
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect('/')
+
+We are simply defining the logout element in a function.Then redirecting the landing to our home page once someone logs out.
+
+
+The next step is to create a blog page and it's url route. Creating the url route is very easy as you can see in the screen -
+
+@app.route("/blogpost")
+def blogpost():
+    return render_template('blog.html')
+
+Also this blog.html , where we are redirecting our landing , needs to be created. This html will get extension from the main.html
+file for common sections. And for the unique elements , such as the blog post form, we'll keep it inside the block.
+
+So let's create the form with bootstrap help as always and rename the necessary fields -
+
+{% block body %}
+<h1 class = 'text-center'>Blog Page</h1> 
+<div class="container">
+<div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Blog Title</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="This is my blog title" name = 'title'>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Author</label>
+    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Author's name" name ='author'>
+  </div>
+  <div class="mb-3">
+    <label for="exampleFormControlTextarea1" class="form-label">Blog Content</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Write your blog here" name = 'content'></textarea>
+  </div> 
+  <input type = 'submit' value = 'POST' class = 'btn btn-primary'>
+</div>
+{% endblock body %}
+
+Now our blog page is created and the form is inserted within. Let's set up blog db model now. This will assist us in taking
+inputs from the user and store the same in our database . The blog id will be our primary key here and will get auto 
+incremental updates. 
+
+class Blog(db.Model):
+    blog_id = db.Column(db.Integer , primary_key = True)
+    title = db.Column(db.String(80),  nullable=False)
+    author = db.Column(db.String(50),  nullable=False)
+    content = db.Column(db.Text(),  nullable=False)
+    pub_date = db.Column(db.DateTime(),  nullable=False , default = datetime.utcnow)
+
+    def __repr__(self):
+        return '<Blog %r>' % self.title
+
+Also we will be using the datetime module here. This module will display the publishing date of the blogs.
+
+from datetime import datetime
+
+we have title , author and content segments for taking user input. And the content segment db type is set as 'text'.
+As the blog content can be very large.
+
+Once the model is created , we need to ensure that it's linked with our database. We also need to make sure that our 
+database is being stored with these data inputs.
+
+let's open up python terminal -
+
+>>> from app import db
+>>> db.create_all()
+>>> from app import Blog
+>>> blog = Blog(title = 'first blog', author = 'chandan' , content = ' This is a test blog')
+>>> db.session.add(blog)
+>>> db.session.commit()
+>>> b = Blog.query.all()
+>>> b
+[<Blog 'first blog'>]
+
+As we can see , our database is linked now.  But right now we are only able to add data through python terminal.
+We wouldn't want that. We should be able to add blogs from the website itself. Hence in our next lessson we will 
+go through that.
+
+This would be the end of this video and we will again meet on the next session. Till then keep learning.

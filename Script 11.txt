@@ -1,0 +1,86 @@
+Hello everyone and welcome to this video.Now our navbar , redirection links and all other neccesary things are in 
+place. We are good to go and add some data in our forms now.
+
+So without any further delay let's begin.
+
+Our goal is to take input from the user and store the data in our database. For this the first method we will be
+needing is 'POST'. this method will access the posted datapoints or the user inputs. Once the post method has done
+it's work , we need to get the data. For that we will use 'GET' method.
+
+The registration form we have will be needing to store the data via POST method. Also it will perform the action of 
+sending the data in register landing page. The code snippet for the same as you can see on the screen -
+
+<form class="row g-3 needs-validation" method ='POST' action ='/register' novalidate>
+
+Also every single input we will consider for the database needs to be assigned to their respective names -
+
+<form class="row g-3 needs-validation" method ='POST' action ='/register' novalidate>
+  <div class="col-md-4">
+    <label for="validationCustom01" class="form-label">First name</label>
+    <input type="text" class="form-control" id="validationCustom01" placeholder="first name"  name ="fname"  required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustom02" class="form-label">Last name</label>
+    <input type="text" class="form-control" id="validationCustom02" placeholder="last name" name ="lname"  required>
+  </div>
+  <div class="col-md-4">
+    <label for="validationCustomUsername" class="form-label">Username</label>
+      <input type="text" class="form-control" placeholder="username" id="validationCustomUsername" aria-describedby="inputGroupPrepend" name ="username"  required>
+  </div>
+      <div class="col-md-4">
+      <label for="pwd" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="password" name ="password"  required>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom03" class="form-label">City</label>
+      <input type="text" class="form-control" placeholder="city" id="validationCustom03" name ="city"  required>
+    </div>
+    <div class="col-md-4">
+      <label for="validationCustom05" class="form-label">Email I'd</label>
+      <input type="email" class="form-control" placeholder="email" id="validationCustom05" name ="email"  required>
+    </div>
+
+Now let's write functions for executing this operation in our app.py file.
+
+@app.route("/register" , methods = ['GET','POST'])
+def register():
+    if request.method == 'POST':
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        city = request.form.get('city')
+        email = request.form.get('email')
+
+
+This will access each segmented datapoints and store them again respective inputs. Once we run the file , lets start the server 
+and visit the registration page. Once we are on the page let's input some data and click on submit.
+
+Now let's come back to our terminal and run the py file again with print statement -
+        print(fname,lname,username,password,city,email)
+
+We will see the terminal executing the submitted data as seen on the screen -
+127.0.0.1 - - [23/Oct/2021 09:24:34] "GET /register HTTP/1.1" 200 -
+Harry Potter Hpotter defg1234 Delhi hp@hogwarts.com
+
+So our data input is succesfull. Now let's store this data in our created database file. Let's go to our app.py
+and code it up as you can see in the screen-
+
+@app.route("/register" , methods = ['GET','POST'])
+def register():
+    if request.method == 'POST':
+        fname = request.form.get('fname')
+        lname = request.form.get('lname')
+        username = request.form.get('username')
+        password = request.form.get('password')
+        city = request.form.get('city')
+        email = request.form.get('email')
+        user = User(fname=fname,lname = lname , username = username , password = password ,city = city,email = email)
+        db.session.add(user)
+        db.session.commit()
+
+As you can see that the user class should have the names assigned as we have done in the register.html file.
+Once we run this on our app.py our added database will keep on getting update in our database. We can crosscheck the
+same in the sqlite viewer as well.
+
+This would be the end of this video. We will again meet on the next session , till then keep learning.

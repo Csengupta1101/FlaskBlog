@@ -1,0 +1,42 @@
+Hello everyone and welcome to this video.Today We will begin rendering templates now into our sites.
+
+So without further delay let's begin.
+
+Lets create our templates sub directory now and do remember to name it "templates". once that is done 
+let's create 3 html pages inside the templates directory as we have created 3 landing pages as , index , login
+and register. so our html pages will be names accordingly.
+
+we will also create another html file called main.html. this will have the common codes to extend in other html files.
+we will use template inheritence here.
+
+Now it's time for bootstrap , lets go to getbootstrap.com.We will fetch the code from here to use in our main.html
+file which will be our base file. Lets copy the starter template and paste it in main.html. Now let's have a look at 
+how the template works. Right click on the main.html and open it with live server , you'll see a webpage returning 
+"Hello World". This is our base template.
+
+Let's also create a url landing for main.html in our app.py , the code snippet will be as
+
+@app.route("/main")
+def main():
+    return('base file')
+
+now for accessing the templates , let's import render template class , the code snippet for the same will be -
+from flask import Flask , render_template
+
+and now instead of simply returning a statement on the main.html file let's render the entire html page in -
+
+@app.route("/main")
+def main():
+    return render_template('main.html')
+
+And now when you access the url as - http://127.0.0.1:5000/main , you'll see the "Hello World" statement. We can also
+change the title heading of main.html as "main page". That's more convinient , so let's do that inside the
+main.html page code -
+
+    <title>Main Page</title>
+  </head>
+  <body>
+    <h1>Main Page</h1>
+
+So our pages are all set as of now. Let's end the session here , and on the next session we will discuss how we will be 
+inheriting the main.html content into other html files.

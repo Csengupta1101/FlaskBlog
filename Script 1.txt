@@ -1,0 +1,23 @@
+Hello everyone and welcome to this video. Today we will be starting our next project. This is an advanced project.
+We will be creating a complete website using flask framework. 
+
+The website will take user registration as an input in the registration
+form. And once the registration is done the message will be shown as the user has been registered.
+
+Now we will be redirected to the login page. This is a blogging website. Once we log in , we will see the name above in the
+navigation bar with which we have logged in.
+
+Now look at the screen as i show you. I'm entering the registration form section and now i am submitting all the necessary details
+Now once the registration is done , I am redirected towards the login page. Now I am logging in and as you can see we have log out option
+as well. As i told you that this is a blog website  we will have a blog adding option as well.
+
+We can input blog title and content and submit the same. Once the blog is posetd , we can see the same in the home page as well.
+We can edit and delete the blog as well as I'm showing you.
+
+Finally we can log out as well from the home page as I'm doing right now. And once the log out is sucesful we can see
+that the login option came back right in the top as where it was before.
+
+This would be the end of this video. We are all set for creating our first flask website , till now we have only created 
+flask apps , now this is the real deal. We will be creating an actual website. 
+
+I will see you on the next lesson and till then keep learning.

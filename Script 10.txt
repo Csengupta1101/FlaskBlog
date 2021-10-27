@@ -1,0 +1,67 @@
+Hello everyone and welcome to this video. Today we will learn how create redirection links , navbar for our landing
+pages.
+
+So without any further delay let's begin.
+
+We first need to get a redirection link to the registration url in our home page. For the same we will add a navbar.
+The navbar we will be adding will be taken from bootstrap website only. This navbar code will be pasted in the main.html
+page. The reason being , we would want this navbar in all of our pages in the site. And from main.html we will extend
+the same.
+
+We will simply go to getbootstrap.com , search for navbar as you can see on the screen and will take the code. -
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Dropdown
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled">Disabled</a>
+        </li>
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+
+</nav>
+
+In the navbar , we are seeing a search option , which we don't require , so we will remove the section.
+take note of highlightes section that is being removed from the navbar elements.Let's also do the necessary
+renaming. Like the name navbar here will be replaced by "My Blogs"
+
+We won't need the dropdown section so will remove that and will create a login and register link. In both the links
+redirection link will be given for resepective pages.
+
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+
+Now our navabar is created with redirection links. In the next lesson we will start adding datapoints through
+the registration form.
+
+This would be the end of this video and we will again meet on the next lesson. Till then keep learning.

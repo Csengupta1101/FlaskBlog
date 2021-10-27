@@ -1,0 +1,56 @@
+Hello everyone and welcome to this video. Now that we have come this far in our lesson I'm quiet sure that we all have
+VS Code and Python downloaded in our system, so I'll not go over in all these installation details anymore.
+
+I have already created my special project folder for this website. I have opened up the folder inside of the VS code.
+I guess you all know that what we will be doing next. Let's open up the terminal and install the required modules as i show you.
+Now you must be wondering that why I'm not creating a virtual environment this time , that's because I'll be using the same
+flask version for this site that i use for my regular work. But I strongly suggest that while you create the website , make sure it's within
+a new virtual environment.
+
+let's install flask in our terminal with pip install flask. as you can see i have already got the same installed. So I'll wait
+by the time yours get done. Now lets create our python file named "app.py". We will import flask class from flask module 
+in our app.
+
+We will now assign the app name as before. Now lets create our famous hello world function inside the app and run the same with
+debug mode as True. Port we can define as per our own.
+
+everything we have done will be seen as the code shown on the screen.
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def index():
+    return('Hello world')
+
+if __name__ == "__main__":
+    app.run(debug=True,port = 5000)
+
+Lets define couple of more landing pages for a better understanding. Let's open up another page called register 
+as we will need a registration page in our website.
+
+The added page code snippet will look like as you can see on the screen -
+
+@app.route("/resgister")
+def register():
+    return('Registration Page')
+
+Now let's run the app again. One more fun fact , in flask framework , you can simply save the app.py file and it'll run automatically.
+our initial url was - http://127.0.0.1:5000/ , and as we added another page , the url will be - http://127.0.0.1:5000/resgister
+and this will return 'Registration Page' as the page content.
+
+
+Same way we will create a login page , the code snippet for the same will be as shown 
+
+@app.route("/login")
+def login():
+    return('Login Page')
+
+and the url for this landing page will be - http://127.0.0.1:5000/login
+
+You all might be wondering that why I keep on reapeting the same process over and over again , but trust me guys 
+the more you practise the better you will become in mastering this awesome framework.
+
+The basics are done as of now so this will be the end of this video. We will continute with templating and html rendering
+in our next session. Till then keep learning.

@@ -1,0 +1,57 @@
+Hello everyone and welcome to this video. So we have completed creating our registration form. Now each time an user submits the data,
+we need to store them.So we need the help of a database where these data will be stored.
+
+So without any further delay let's begin.
+
+As we learned in our last lesson , we need sqlalchemy for this. Let's install it at the terminal.I have in installed
+so here it says requirement satisfied already. Once we have installed it from the terminal let's import the module
+at the app.py file.
+
+the code snippet for importing are as shown on the screen.
+
+from flask_sqlalchemy import SQLAlchemy
+
+One small thing to mention here. You might face difficulty while importing the module saying the module is not recognised.
+Although you have just got sqlalchemy installed , this issue may arise. Don't get confused. In such scnario follow the steps
+as i instruct. First check the version of python , you have in your system. For me it's 3.6.8. And now go to the "select
+interpreter" section at the VS-Code. Ctrl+shift+p will open up the search box. From there you can select your interepreter
+as the same version of your system. And the problem will be resolved.
+
+Great , now the modules are imported. Let's go ahead and create the database now. As you can see on the screen I'm again 
+reaching out for official documentation of SQLAlchemy for the codes. 
+
+now we have to instantiate the SQLAlchemy module, and for that, we can both use SQLite of MySQL database. we will use SQLite here. 
+Although from your end you can use MySql as well. To access the SQLite database URL, we need to go to 'SQLALCHEMY_DATABASE_URI'  in google search. Access the site and copy the SQLite URL from there.
+
+Then use the copied code as below,
+
+from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///mydb.db"
+
+please note that the copied URL was - sqlite:////tmp/test.DB, and we have changed it to our requirement and will.
+
+Now we will be taking note of two things before we run the app and create our database.
+We will set SQLAlchemy Track  Modifications as False.
+Now run the app. Code as you can see on the screen -
+
+app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////mydb.db"
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
+The moment we run this successfully, we are one step closer to create our database. 
+
+Our data model is created. Let's create the database now. We need to use the python terminal for that.
+Type the code as shown on the screen and your database will be created in the folder.
+
+>>> from app import db
+>>> db.create_all()
+>>> 
+
+Have a look at the folder explorer of your vs code. mydb.db is created.
+
+This would be the end of this video and we will again meet on our next session. Till then keep learning.
+

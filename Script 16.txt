@@ -1,0 +1,98 @@
+Hello everyone and welcome to this video. We will be setting up our blogposts today. This will ensure that
+any user after registering and logging in into our website is able to add blogposts. We will work on the 
+viewing templates of the blogs as well.
+
+So without any further delay , let's begin.
+
+Our app.py file will have the functionality and route map set up , so that it can take user input as arguments
+and pass them on to the database.
+
+@app.route("/blogpost" , methods = ['GET','POST'])
+def blogpost():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        author = request.form.get('author')
+        content = request.form.get('content')
+        blog = Blog(title=title,author=author,content=content)
+        db.session.add(blog)
+        db.session.commit()
+        flash ("your post has been submitted","success")
+        return redirect('/')
+    return render_template('blog.html')
+
+The blog template will be rendered with a success message as displayed here. The other parts of the snippet is already 
+familiar with you as we have created the user model just like this only.
+
+The blog content once posted , will be displayed on the home page. Redirection will be routed accordingly.
+
+@app.route("/blogpost" , methods = ['GET','POST'])
+def blogpost():
+    if request.method == 'POST':
+        title = request.form.get('title')
+        author = request.form.get('author')
+        content = request.form.get('content')
+        blog = Blog(title=title,author=author,content=content)
+        db.session.add(blog)
+        db.session.commit()
+        flash ("your post has been submitted","success")
+        return redirect('/')
+    return render_template('blog.html')
+
+We will be accessing the title ,author and content in here. Then we will be adding and commiting the session. Once we
+have committed the session the data will get added in the created database. And we will be able to add posts from the 
+site itself now.
+
+One if else conditioning will be implied in the blogposy segment as well. This will ensure the proper execution each
+time a command is passed on to the franework.
+
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/">Home</a>
+        </li>
+        {% if current_user.is_authenticated%}
+        <li class="nav-item">
+          <a class="nav-link" href="">{{current_user.username}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/blogpost">Post Blog</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="/register">Register</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/login">Login</a>
+        </li>
+        {% endif %}
+
+Finally we will be needing a display function each time a blog gets added to out home page. Hence we will take help
+from bootstrap again for accumulating this function. This will be the key structuring on how the blogs are displayed
+The snippet is as show on the screen -
+
+<div class="row mb-2"> 
+<h1>Home Page</h1>
+{% for blog in data %} 
+<div class="col-md-6">
+    <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+        <div class="col p-4 d-flex flex-column position-static">
+          <h3 class="mb-0">{{blog.title}}</h3>
+          <div class="mb-1 text-muted">{{blog.pub_date}}</div>
+          <div class="mb-1 text-muted"><h5>{{blog.author}}</h4></div>
+          <p class="card-text mb-auto">{{blog.content}}</p>
+          <a href="#"  class = 'btn btn-primary'>Continue reading</a>
+        </div>
+      </div>  
+    </div>
+{% endfor %}
+</div>
+
+So we have seen how to add blog pages and take inputs in the same. On our next lesson we will be learning about updating
+and deleteing the user inputs.
+
+This would be the end of this video and we will again meet on the next session. Till then keep learning.
+
+
