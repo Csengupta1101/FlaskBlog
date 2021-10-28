@@ -6,5 +6,15 @@ The registered user will have the option to post , edit and delete their blogs.
 
 # WorkFlow -
 
+## Module Installation
+
+* Flask
+* SQLAlchemy
+* Datetime
+* Request
+* Redirect
+* Gunicorn
+* Login Manager
+* User Mixin
 
 
