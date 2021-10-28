@@ -1,3 +1,5 @@
+![blog] (https://github.com/Csengupta1101/FlaskBlog/blob/main/blog.jpg)
+
 # Project Goal -
 We will be creating a complete website using the flask framework.
 The website will take user registration as an input in the registration form. 
