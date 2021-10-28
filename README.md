@@ -1,4 +1,4 @@
-![blog] (https://github.com/Csengupta1101/FlaskBlog/blob/main/blog.jpg)
+! [blog] (https://github.com/Csengupta1101/FlaskBlog/blob/main/blog.jpg)
 
 # Project Goal -
 We will be creating a complete website using the flask framework.
